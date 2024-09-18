@@ -39,7 +39,7 @@
         },
         "GitHubBranch": {
             "type": "string",
-            "defaultValue": "master",
+            "defaultValue": "main",
             "metadata": {
                 "description": "Which version do you want to deploy. (Default = Master)."
             }
