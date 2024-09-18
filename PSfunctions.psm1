@@ -4,7 +4,7 @@ function New-MFARequest {
     )
 	######### Variables #########
 	$ApplicationId = $ENV:ApplicationID
-    $ApplicationSecret = $ENV:ApplicationSecret
+    	$ApplicationSecret = $ENV:ApplicationSecret
 	$TenantId = $ENV:TenantID
 	$ClientId = "981f26a1-7f43-403b-a875-f8b09b8cd720"
 	######### Variables ########
@@ -58,16 +58,6 @@ function New-MFARequest {
 	$Headers = @{ "Authorization" = "Bearer $($mfaClientToken.access_token)" }
 	$mfaResult = Invoke-RestMethod -uri 'https://strongauthenticationservice.auth.microsoft.com/StrongAuthenticationService.svc/Connector//BeginTwoWayAuthentication' -Method POST -Headers $Headers -Body $XML -ContentType 'application/xml'
 	Write-Host "Done." -ForegroundColor Green
-
-	##########
-	#    if ($obj.BeginTwoWayAuthenticationResponse.AuthenticationResult -ne $true) {
-	#        return "Authentication failed. does the user have Push/Phone call MFA configured? Errorcode: $($obj.BeginTwoWayAuthenticationResponse.result.value | out-string)"
-	#    }
-	#    if ($obj.BeginTwoWayAuthenticationResponse.result) {
-	#        return "Received a MFA confirmation: $($obj.BeginTwoWayAuthenticationResponse.result.value | Out-String)"
-	#    }
-	#}
-	##########
 
 	Write-Host $mfaResult.OuterXml
  
