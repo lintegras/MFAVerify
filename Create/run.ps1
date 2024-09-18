@@ -2,6 +2,10 @@ using namespace System.Net
 # Input bindings are passed in via param block.
 param($Request, $TriggerMetadata)
 
+# Import required modules
+Import-Module Microsoft.Graph
+Import-Module MSOnline
+
 # Write to the Azure Functions log stream.
 Write-Host "PowerShell HTTP trigger function processed a request."
 
