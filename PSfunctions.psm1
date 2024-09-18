@@ -6,9 +6,6 @@ function New-MFARequest {
 	$ApplicationId = $ENV:ApplicationID
     $ApplicationSecret = $ENV:ApplicationSecret
 	$TenantId = $ENV:TenantID
-	#$ApplicationId = "a57d6faf-01ba-42bf-b370-fb5581ac3621"
-	#$ApplicationSecret = "xKP8Q~XvmRRKCypvQNhkZhQXZb8Egbps-PA~MblR"
-	#$TenantId = "eb5c5fe1-a817-4787-b344-061c0aa44fdf"
 	$ClientId = "981f26a1-7f43-403b-a875-f8b09b8cd720"
 	######### /Variables ########
 
