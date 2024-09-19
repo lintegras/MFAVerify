@@ -5,7 +5,7 @@ param($Request, $TriggerMetadata)
 # Import required modules
 Import-Module -Name Microsoft.Graph.Applications
 Import-Module -Name Microsoft.Graph.Authentication
-#Connect-MgGraph 
+Connect-MgGraph 
 
 # Write to the Azure Functions log stream.
 Write-Host "PowerShell HTTP trigger function processed a request."
@@ -19,7 +19,7 @@ else {
 
 $Username = $Request.Query.username
 if (!$Username){
-$Username = ([System.Web.HttpUtility]::ParseQueryString($Request.Body))['username']
+  $Username = ([System.Web.HttpUtility]::ParseQueryString($Request.Body))['username']
 }
 
 if ($Username) {
@@ -33,10 +33,10 @@ $MFARequest
 else {
   $RequestText = @"
   <form action="create" method="POST">
-    <label for="Username">User principal name</label><br>
-    <input type="text" name="username" id="username" value="sample.user@troon.io"><br>
-    Use the 'Push MFA Request' button below to send a Microsoft Authenticator MFA push request to the user.<br>
-    <input class="button" name="Submit" type="submit" value="Push MFA Request">
+  <label for="Username">User principal name</label><br>
+  <input type="text" name="username" id="username" value="sample.user@troon.io"><br>
+  Use the 'Push MFA Request' button below to send a Microsoft Authenticator MFA push request to the user.<br>
+  <input class="button" name="Submit" type="submit" value="Push MFA Request">
   </form>
 "@
 }
@@ -91,7 +91,7 @@ $($Logo)
 <div>
 $RequestText
 </div>
-  </center>
+</center>
 </body>
 </html>
 "@
