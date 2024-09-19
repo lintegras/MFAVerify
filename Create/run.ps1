@@ -3,8 +3,8 @@ using namespace System.Net
 param($Request, $TriggerMetadata)
 
 # Import required modules
-Import-Module -Name Microsoft.Graph.Applications -UseWindowsPowershell
-Import-Module -Name Microsoft.Graph.Authentication -UseWindowsPowershell
+Import-Module -Name Microsoft.Graph.Applications
+Import-Module -Name Microsoft.Graph.Authentication
 #Connect-MgGraph 
 
 # Write to the Azure Functions log stream.
