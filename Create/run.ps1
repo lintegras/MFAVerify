@@ -3,9 +3,9 @@ using namespace System.Net
 param($Request, $TriggerMetadata)
 
 # Import required modules
-Import-Module -Name Microsoft.Graph
-Import-Module -Name MSOnline
-Connect-MgGraph 
+Import-Module -Name Microsoft.Graph.Applications -UseWindowsPowershell
+Import-Module -Name Microsoft.Graph.Authentication -UseWindowsPowershell
+#Connect-MgGraph 
 
 # Write to the Azure Functions log stream.
 Write-Host "PowerShell HTTP trigger function processed a request."
@@ -24,7 +24,7 @@ $Username = ([System.Web.HttpUtility]::ParseQueryString($Request.Body))['usernam
 
 if ($Username) {
   import-module .\PSfunctions.psm1
-  import-module MSOnline -UseWindowsPowerShell
+  #import-module MSOnline -UseWindowsPowerShell
   $MFARequest = New-MFARequest -EmailToPush $Username
   $RequestText = @"
 $MFARequest
