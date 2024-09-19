@@ -3,8 +3,9 @@ using namespace System.Net
 param($Request, $TriggerMetadata)
 
 # Import required modules
-Import-Module Microsoft.Graph
-Import-Module MSOnline
+Import-Module -Name Microsoft.Graph
+Import-Module -Name MSOnline
+ 
 
 # Write to the Azure Functions log stream.
 Write-Host "PowerShell HTTP trigger function processed a request."
