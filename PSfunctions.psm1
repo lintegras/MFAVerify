@@ -4,7 +4,7 @@ function New-MFARequest {
     )
 	######### Variables #########
 	$ApplicationId = $ENV:ApplicationID
-    	$ApplicationSecret = $ENV:ApplicationSecret
+	$ApplicationSecret = $ENV:ApplicationSecret
 	$TenantId = $ENV:TenantID
 	$ClientId = "981f26a1-7f43-403b-a875-f8b09b8cd720"
 	######### Variables ########
