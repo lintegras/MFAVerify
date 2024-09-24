@@ -10,12 +10,14 @@ function New-MFARequest {
 	######### Variables ########
 
 	Write-Host "Creating secure credentials and secrets..." -ForegroundColor Green
- 	$SecureAppSecret = ConvertTo-SecureString -String $ApplicationSecret -AsPlainText -Force
-  	Write-Host $SecureAppSecret
- 	$Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $ApplicationId, $SecureAppSecret
-  	Write-Host $Credential
+  	$Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $ApplicationId, ($ApplicationSecret | ConvertTo-SecureString -AsPlainText -Force)
+	Connect-MgGraph -ClientSecretCredential $Credential -TenantId $TenantId -NoWelcome -Debug
+    	#$SecureAppSecret = ConvertTo-SecureString -String $ApplicationSecret -AsPlainText -Force
+  	#Write-Host $SecureAppSecret
+ 	#$Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $ApplicationId, $SecureAppSecret
+  	#Write-Host $Credential
 #	$Credential = New-Object System.Management.Automation.PSCredential($ApplicationId, ($ApplicationSecret | Convertto-SecureString -AsPlainText -Force))
-	Connect-MgGraph -TenantId $TenantId -ClientSecretCredential $Credential -NoWelcome
+	#Connect-MgGraph -TenantId $TenantId -ClientSecretCredential $Credential -NoWelcome
 	$ServicePrincipalId = (Get-MgServicePrincipal -Filter "appid eq '$ClientId'").Id
 	$params = @{
 		passwordCredential = @{
