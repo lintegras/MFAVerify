@@ -19,6 +19,7 @@ function New-MFARequest {
 		}
 	}
 	$Secret = (Add-MgServicePrincipalPassword -ServicePrincipalId $ServicePrincipalId -BodyParameter $params).SecretText
+ 	Sleep 15
 	Write-Host "Done." -ForegroundColor Green
 	
 	Write-Host "Getting MFA Client Access Token..." -ForegroundColor Green
