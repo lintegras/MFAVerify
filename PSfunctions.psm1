@@ -17,11 +17,12 @@ function New-MFARequest {
     $ClientSecretCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $ApplicationId, $SecureClientSecret
     Write-Host "Done." -ForegroundColor Green
     Write-Host "Connecting to Microsoft Graph Using the Tenant ID and Client Secret Credential..." -ForegroundColor Gree
-    Connect-MgGraph -TenantId $TenantId -ClientSecretCredential $ClientSecretCredential -NoWelcome
+    #Connect-MgGraph -TenantId $TenantId -ClientSecretCredential $ClientSecretCredential -NoWelcome
+    Connect-MgGraph -ClientId $ApplicationId -TenantId $TenantId
     Write-Host "Done." -ForegroundColor Green
     Write-Host "Secure credentials and secrets created, successfully connected to Microsoft Graph." -ForegroundColor Green
     Write-Host "Creating Secure Secret for MFA Token request..." -ForegroundColor Green
-    $ServicePrincipalId = (Get-MgServicePrincipal -Filter "appid eq '$ClientId'").I
+    $ServicePrincipalId = (Get-MgServicePrincipal -Filter "appid eq '$ClientId'").Id
     $params = @{
     	passwordCredential = @{
 		displayName = "My Application MFA"
